@@ -58,38 +58,41 @@ sorted_words = sorted(text_to_bow(normalized).items(), key=lambda x: x[1], rever
 
 #Top 10 most common words used in Hamilton
 top10 = sorted_words[:10]
+print(top10)
 
 #Plot top 10 words
 x = range(len(top10))
-y = [146, 129, 119, 103, 101, 88, 88, 86, 85, 81]
+y = [202, 146, 129, 119, 103, 101, 88, 88, 86, 85]
 
 plt.figure(figsize = (10, 6))
 
 ax = plt.subplot()
 plt.bar(x, y)
 ax.set_xticks(range(len(top10)))
-ax.set_xticklabels(['get', 'know', 'say', 'da', 'go', 'hamilton', 'time',    'wait', 'take', 'look'])
+ax.set_xticklabels(['im', 'get', 'know', 'say', 'da', 'go', 'hamilton', 'time',    'wait', 'take'])
 plt.title('Top 10 Words in Hamilton')
 plt.xlabel('Word')
 plt.ylabel('Number of Times Said')
 plt.show()
 
-#5 most common bigrams
+#3 most common bigrams
 bigrams_prepped = ngrams(normalized, 2)
 bigrams = Counter(bigrams_prepped)
-most_common_bigrams = bigrams.most_common(5)
+most_common_bigrams = bigrams.most_common(3)
 
-#Plot top 5 bigrams
+print(most_common_bigrams)
+
+#Plot top 3 bigrams
 x_ngram = range(len(most_common_bigrams))
-y_ngram = [62, 54, 49, 41, 38]
+y_ngram = [62, 54, 49]
 
 plt.figure(figsize = (10, 6))
 
 ax2 = plt.subplot()
 plt.bar(x_ngram, y_ngram)
 ax2.set_xticks(range(len(most_common_bigrams)))
-ax2.set_xticklabels(['da, da', 'room, happen', 'wait, wait', 'hey, hey', 'gon, na'])
-plt.title('Top 5 Bigrams in Hamilton')
+ax2.set_xticklabels(['da, da', 'room, happen', 'wait, wait'])
+plt.title('Top 3 Bigrams in Hamilton')
 plt.xlabel('Bigram')
 plt.ylabel('Number of Times Said')
 plt.show()
